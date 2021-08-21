@@ -87,12 +87,14 @@ const Signup = () => {
             />
             {passwordError && <ErrorMessage>비밀번호가 일치하지 않습니다</ErrorMessage>}
           </div>
+
           <div>
             <Checkbox name="uset-term" checked={term} onChange={onChangeTerm}>
               약관에 동의 하십니까?
             </Checkbox>
             {termError && <ErrorMessage>약관에 동의 하셔야합니다</ErrorMessage>}
           </div>
+
           <div style={{ marginTop: 10 }}>
             <Button type="primary" htmlType="submit">
               가입하기
