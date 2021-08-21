@@ -5,9 +5,23 @@ import Link from 'next/link';
 import { Menu, Input, Row, Col } from 'antd';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
+import { createGlobalStyle } from 'styled-components';
 
 import LoginForm from './LoginForm';
 import UserProfile from './UserProfile';
+
+const Global = createGlobalStyle`
+  .ant-row{
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+  .ant-clo:first-child {
+    padding-left:0 !important ;
+  }
+  .ant-col:last-child{
+    padding-right: 0 !important;
+  }
+`;
 
 const SerachInput = styled(Input.Search)`
   vertical-align: middle;
@@ -18,6 +32,7 @@ const AppLayout = ({ children }) => {
 
   return (
     <div>
+      <Global />
       <Menu mode="horizontal">
         <Menu.Item key="home">
           <Link href="/">
@@ -41,7 +56,6 @@ const AppLayout = ({ children }) => {
           </Link>
         </Menu.Item>
       </Menu>
-
       <Row gutter={8}>
         <Col xs={24} md={6}>
           {isLoggedIn ? <UserProfile /> : <LoginForm />}

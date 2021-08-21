@@ -6,7 +6,7 @@ export const initialState = {
         id: 1,
         nickname: '제로초',
       },
-      content: '첫 번째 게시글',
+      content: '첫 번째 게시글 #해시태그 #익스프레스',
       Images: [
         {
           src: 'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
@@ -25,6 +25,12 @@ export const initialState = {
           },
           content: '얼른 사고싶어요~',
         },
+        {
+          User: {
+            nickname: 'nero',
+          },
+          content: '저도 사고싶어요~',
+        },
       ],
     },
   ],
@@ -40,7 +46,7 @@ export const addPost = {
 
 const dummyPost = {
   id: 2,
-  content: '더미데이터',
+  content: '더미데이터 #더미 #더미데이터',
   User: {
     id: 1,
     nickname: 'honey',
