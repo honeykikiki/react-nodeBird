@@ -72,7 +72,7 @@ styled-components = createeFlobalSyle 사용해서 엔트디 스타일 덮어쓸
 
 react-slick를 사용해서 이미지 슬라이더 만들기(이미지 줌으로 폴더 따로 뺴서 작성 : 스타일이 많이 들어가서 스타일을 따로 분리하고 재사용 하기위해 )
 
-## 리엑트 노드버드 5~일차
+## 리엑트 노드버드 5~8일차
 
 ### redux-thunk, saga, generator
 
@@ -141,6 +141,14 @@ saga를 이용한 비동기 액션처리
 3가지로 구분 
 Request => Succes => failure 로 작동
 
+immer 불변성을 지켜주는 라이브러리
+faker 더미데이터 만들어주는 라이브러리
+
+인피니트 스크롤 스크롤 일정 높이라 내리면 새로운 데이터 받아오기 (데이터 최적화를 위해서는 화면에 보이는 데이터만 저장하는 방법이있다 react-virtualized)
+window.scrollY 
+document.documentElement.clientHeight  
+document.documentElement.scrollHeight
+세가지 스크롤값을 이용한다 
 
 
 
