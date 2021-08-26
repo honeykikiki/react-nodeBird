@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Slick from 'react-slick';
 
@@ -6,7 +6,6 @@ import { Overlay, Header, CloseBtn, SlickWrapper, ImageWrapper, Indicator, Globa
 
 const ImagesZoom = ({ images, onClose }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const onClick = useCallback(() => {}, []);
   return (
     <Overlay>
       <Global />

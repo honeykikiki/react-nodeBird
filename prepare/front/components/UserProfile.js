@@ -1,30 +1,37 @@
 import React, { useCallback } from 'react';
 import { Avatar, Card, Button } from 'antd';
-import { useDispatch } from 'react-redux';
-import { logoutAction } from '../reducers/user';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutRequestAction } from '../reducers/user';
 
 const UserProfile = () => {
   const dispatch = useDispatch();
+  const { me, logOutLoadind } = useSelector((state) => state.user);
+
   const onLogOut = useCallback(() => {
-    dispatch(logoutAction());
+    dispatch(logoutRequestAction());
   }, []);
 
   return (
     <Card
       actions={[
         <div key="twit">
-          짹쨱 <br />0
+          짹쨱 <br />
+          {me.Posts.length}
         </div>,
         <div key="followings">
-          팔로잉 <br />1
+          팔로잉 <br />
+          {me.Followings.length}
         </div>,
         <div key="followings">
-          팔로워 <br />2
+          팔로워 <br />
+          {me.Fllowers.length}
         </div>,
       ]}
     >
-      <Card.Meta avatar={<Avatar>H.K</Avatar>} title="honey" />
-      <Button onClick={onLogOut}>로그아웃</Button>
+      <Card.Meta avatar={<Avatar>{me?.nickname[0]}</Avatar>} title={me?.nickname} />
+      <Button onClick={onLogOut} loading={logOutLoadind}>
+        로그아웃
+      </Button>
     </Card>
   );
 };

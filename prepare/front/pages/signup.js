@@ -2,9 +2,11 @@ import React, { useCallback, useState } from 'react';
 import Head from 'next/head';
 import { Checkbox, Form, Input, Button } from 'antd';
 
-import AppLayout from '../components/Applayout';
-import useinput from '../hooks/useinput';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import AppLayout from '../components/Applayout';
+import useinput from '../hooks/useInput';
+import { SIGN_UP_REQUEST } from '../reducers/user';
 // import Password from 'antd/lib/input/Password';
 
 const ErrorMessage = styled.div`
@@ -12,7 +14,10 @@ const ErrorMessage = styled.div`
 `;
 
 const Signup = () => {
-  const [id, onchangeId] = useinput('');
+  const dispatch = useDispatch();
+  const { signUpLoading } = useSelector((state) => state.user);
+
+  const [email, onchangeEmail] = useinput('');
   const [nickname, onchangeNickname] = useinput('');
   const [password, onchangePassword] = useinput('');
 
@@ -23,7 +28,7 @@ const Signup = () => {
       setPasswordCheck(e.target.value);
       setPasswordError(e.target.value !== password);
     },
-    [password]
+    [password],
   );
 
   const [term, setTerm] = useState('');
@@ -33,6 +38,7 @@ const Signup = () => {
     setTermError(false);
   }, []);
 
+  // eslint-disable-next-line consistent-return
   const onSubmit = useCallback(() => {
     if (password !== passwordCheck) {
       return setPasswordError(true);
@@ -40,7 +46,11 @@ const Signup = () => {
     if (!term) {
       return setTermError(true);
     }
-    console.log(id, password, nickname);
+    console.log(email, password, nickname);
+    dispatch({
+      type: SIGN_UP_REQUEST,
+      data: { email, password, nickname },
+    });
   }, [password, passwordCheck, term]);
 
   return (
@@ -52,9 +62,9 @@ const Signup = () => {
         </Head>
         <Form onFinish={onSubmit}>
           <div>
-            <label htmlFor="user-id">아이디</label>
+            <label htmlFor="user-email">이메일</label>
             <br />
-            <Input name="user-id" value={id} onChange={onchangeId} required />
+            <Input name="user-email" type="email" value={email} onChange={onchangeEmail} required />
           </div>
 
           <div>
@@ -96,7 +106,7 @@ const Signup = () => {
           </div>
 
           <div style={{ marginTop: 10 }}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={signUpLoading}>
               가입하기
             </Button>
           </div>
