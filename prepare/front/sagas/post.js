@@ -1,6 +1,6 @@
 import { all, delay, fork, put, takeLatest, throttle } from 'redux-saga/effects';
 import axios from 'axios';
-import shortid, { generate } from 'shortid';
+import shortid from 'shortid';
 
 import {
   ADD_POST_SUCCESS,
