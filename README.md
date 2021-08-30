@@ -151,7 +151,7 @@ document.documentElement.scrollHeight
 세가지 스크롤값을 이용한다 
 
 
-## 리엑트 노드버드 8~일차
+## 리엑트 노드버드 8~10일차
 
 ### 노드로 서버 구동하기 (express, Postman, MySQL, MySQL Workbench, sequelize, nodemon)
 
@@ -177,3 +177,8 @@ document.documentElement.scrollHeight
 
 >nodemon :
     nodemon은 node monitor의 약자로, 노드가 실행하는 파일이 속한 디렉터리를 감시하고 있다가 파일이 수정되면 자동으로 노드 애플리케이션을 재시작하는 확장 모듈입니다. 이 확장 모듈을 이용하면 개발 중인 노드 애플리케이션의 소스 코드를 수정할 때마다 매번 노드 명령어를 통해 새로 시작할 필요가 없으므로 매우 편리합니다.
+
+## 리엑트 노드버드 10~일차
+
+### 노드로 서버 데이터 저장하기 (회원가입, cors문제 해결하기)
+

@@ -1,4 +1,4 @@
-import { all, delay, fork, put, takeLatest } from 'redux-saga/effects';
+import { all, delay, fork, put, takeLatest, call } from 'redux-saga/effects';
 import axios from 'axios';
 
 import {
@@ -59,21 +59,19 @@ function* unFollow(action) {
   }
 }
 
-function loginAPI(data) {
-  return axios.post('/api/login', data);
+function logInAPI(data) {
+  return axios.post('/user/login', data);
 }
 
 function* login(action) {
   try {
-    // const result = yield call(loginAPI, action.data); // loginAPI의 매개변수는 ()안에 들어가지 않고 a,c,v, 배열형식으로 들어간다
-    console.log('sagalogin');
-    yield delay(1000);
+    const result = yield call(logInAPI, action.data);
     yield put({
       type: LOG_IN_SUCCESS,
-      data: action.data,
-      // data: result.data,
+      data: result.data,
     });
   } catch (err) {
+    console.error(err);
     yield put({
       type: LOG_IN_FAILURE,
       error: err.response.data,
@@ -82,7 +80,7 @@ function* login(action) {
 }
 
 function logoutAPI() {
-  return axios.post('/api/logout');
+  return axios.post('/user/logout');
 }
 
 function* logout() {
@@ -102,15 +100,14 @@ function* logout() {
   }
 }
 
-function signupAPI() {
-  return axios.post('/api/signup');
+function signupAPI(data) {
+  return axios.post('/user', data);
 }
 
-function* signup() {
+function* signup(action) {
   try {
-    // const result = yield call(signupAPI);
-    yield delay(1000);
-
+    const result = yield call(signupAPI, action.data);
+    console.log(result);
     yield put({
       type: SIGN_UP_SUCCESS,
       // data: result.data,
