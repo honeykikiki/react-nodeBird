@@ -1,11 +1,49 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const { User } = require('../models');
+const { User, Post } = require('../models');
 
 const router = express.Router();
+const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 
-router.post('/login', (req, res, next) => {
+router.get('/', async (req, res, next) => {
+  try {
+    if (req.user) {
+      const fullUserWithoutPassword = await User.findOne({
+        // 정보가져오기 비밀번호 제외하고 팔로잉 팔로우 포스트 정보 만들어주기
+        where: { id: req.user.id },
+        attributes: {
+          exclude: ['password'],
+        },
+        include: [
+          {
+            model: Post,
+            attributes: ['id'],
+          },
+          {
+            model: User,
+            as: 'Followings',
+            attributes: ['id'],
+          },
+          {
+            model: User,
+            as: 'Followers',
+            attributes: ['id'],
+          },
+        ],
+      });
+      res.status(200).json(fullUserWithoutPassword);
+    } else {
+      res.status(200).json(null);
+    }
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+router.post('/login', isNotLoggedIn, (req, res, next) => {
+  //로그인
   passport.authenticate('local', (err, user, info) => {
     if (err) {
       console.log(err);
@@ -19,13 +57,33 @@ router.post('/login', (req, res, next) => {
         console.error(loginErr);
         return next(loginErr);
       }
-      return res.status(200).json(user);
+      const fullUserWithoutPassword = await User.findOne({
+        // 정보가져오기 비밀번호 제외하고 팔로잉 팔로우 포스트 정보 만들어주기
+        where: { id: user.id },
+        attributes: {
+          exclude: ['password'],
+        },
+        include: [
+          {
+            model: Post,
+          },
+          {
+            model: User,
+            as: 'Followings',
+          },
+          {
+            model: User,
+            as: 'Followers',
+          },
+        ],
+      });
+      return res.status(200).json(fullUserWithoutPassword);
     });
   })(req, res, next);
 });
 
-router.post('/', async (req, res, next) => {
-  // POST /user
+router.post('/', isNotLoggedIn, async (req, res, next) => {
+  // POST /user : 회원가입
   try {
     const exUser = await User.findOne({
       where: {
@@ -48,6 +106,12 @@ router.post('/', async (req, res, next) => {
     console.error(error);
     next(error); // status(500)
   }
+});
+
+router.post('/logout', isLoggedIn, (req, res, next) => {
+  req.logOut();
+  req.session.destroy();
+  res.send('ok');
 });
 
 module.exports = router;

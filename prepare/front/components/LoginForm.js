@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { Form, Input, Button } from 'antd';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -22,11 +22,18 @@ const FormWrapper = styled(Form)`
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const { logInLoading } = useSelector((state) => state.user);
+  const { logInLoading, logInError } = useSelector((state) => state.user);
   const [email, onChangeEmail] = useInput('');
   const [password, onchangePassword] = useInput('');
 
   // const style = useMemo(() => ({ marginTop: 10 }), []); // 스타일컴포넌트 쓰기 싫을떄
+
+  useEffect(() => {
+    if (logInError) {
+      // eslint-disable-next-line no-alert
+      alert(logInError);
+    }
+  }, [logInError]);
 
   const onSubmitForm = useCallback(() => {
     console.log(email, password);

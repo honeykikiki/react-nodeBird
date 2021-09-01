@@ -4,14 +4,17 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const dotenv = require('dotenv');
+const morgan = require('morgan');
 
 const postRouter = require('./routes/post');
+const postsRouter = require('./routes/posts');
 const userRouter = require('./routes/user');
 const db = require('./models');
 const passportConfig = require('./passport');
 
 dotenv.config();
 const app = express();
+
 db.sequelize
   .sync()
   .then(() => {
@@ -20,12 +23,16 @@ db.sequelize
   .catch(console.error);
 passportConfig();
 
+app.use(morgan('dev'));
+
+// cors문제 해결
 app.use(
   cors({
-    origin: '*', // 허용하는 페이지 주소
-    credentials: 'false', //
+    origin: 'http://localhost:3060', // 허용하는 페이지 주소
+    credentials: true, // 쿠키를 전해줄떄
   }),
 );
+
 // 프론트에서 넘어온 데이터를 req.body에 넣어주는 역활을 한다 위치가 중요
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -49,16 +56,19 @@ app.get('/', (req, res) => {
   res.send('hello ');
 });
 
-app.get('/posts', (req, res) => {
-  res.json([
-    { id: 1, content: 'hello1' },
-    { id: 2, content: 'hello2' },
-    { id: 3, content: 'hello3' },
-  ]);
-});
+app.use('/posts', postsRouter);
+// app.get('/posts', (req, res) => {
+//   res.json([
+//     { id: 1, content: 'hello1' },
+//     { id: 2, content: 'hello2' },
+//     { id: 3, content: 'hello3' },
+//   ]);
+// });
 
 app.use('/post', postRouter);
 app.use('/user', userRouter);
+
+// app.use((err,req,res,next)=> {}) // 어러처리 미들웨어 에러를 특별하게 할떄
 
 app.listen(3065, () => {
   console.log('서버 실행 중');

@@ -8,7 +8,7 @@ module.exports = () => {
   passport.use(
     new LocalStrategy(
       {
-        usernameField: 'email',
+        usernameField: 'email', //req.body.email를 작성한것
         passwordField: 'password',
       },
       async (email, password, done) => {

@@ -1,6 +1,6 @@
-import shortId from 'shortid';
 import produce from 'immer';
-import faker from 'faker';
+// import shortId from 'shortid';
+// import faker from 'faker';
 
 export const initialState = {
   mainPosts: [],
@@ -20,31 +20,31 @@ export const initialState = {
   addCommentError: null,
 };
 
-export const generateDummyPost = (number) =>
-  Array(number)
-    .fill()
-    .map((v, i) => ({
-      id: shortId.generate(),
-      User: {
-        id: shortId.generate(),
-        nickname: faker.name.findName(),
-      },
-      content: faker.lorem.paragraph(),
-      Images: [
-        {
-          src: faker.image.image(),
-        },
-      ],
-      Comments: [
-        {
-          User: {
-            id: shortId.generate(),
-            nickname: faker.name.findName(),
-          },
-          content: faker.lorem.sentence(),
-        },
-      ],
-    }));
+// export const generateDummyPost = (number) =>
+//   Array(number)
+//     .fill()
+//     .map((v, i) => ({
+//       id: shortId.generate(),
+//       User: {
+//         id: shortId.generate(),
+//         nickname: faker.name.findName(),
+//       },
+//       content: faker.lorem.paragraph(),
+//       Images: [
+//         {
+//           src: faker.image.image(),
+//         },
+//       ],
+//       Comments: [
+//         {
+//           User: {
+//             id: shortId.generate(),
+//             nickname: faker.name.findName(),
+//           },
+//           content: faker.lorem.sentence(),
+//         },
+//       ],
+//     }));
 
 // initialState.mainPosts = initialState.mainPosts.concat(generateDummyPost(10));
 
@@ -74,25 +74,25 @@ export const addComment = (data) => ({
   data,
 });
 
-const dummyPost = (data) => ({
-  id: data.id,
-  content: data.content,
-  User: {
-    id: 1,
-    nickname: '제로초',
-  },
-  Images: [],
-  Comments: [],
-});
+// const dummyPost = (data) => ({
+//   id: data.id,
+//   content: data.content,
+//   User: {
+//     id: 1,
+//     nickname: '제로초',
+//   },
+//   Images: [],
+//   Comments: [],
+// });
 
-const dummyComments = (data) => ({
-  id: shortId.generate(),
-  content: data,
-  User: {
-    id: 1,
-    nickname: 'honey',
-  },
-});
+// const dummyComments = (data) => ({
+//   id: shortId.generate(),
+//   content: data,
+//   User: {
+//     id: 1,
+//     nickname: 'honey',
+//   },
+// });
 
 // 이전 상태를 액션을 통해 다음상태로 만들어내는 함수 (불변성은 지키면서)
 const reducer = (state = initialState, action) => {
@@ -121,7 +121,8 @@ const reducer = (state = initialState, action) => {
       case ADD_POST_SUCCESS:
         draft.addPostLoading = false;
         draft.addPostDone = true;
-        draft.mainPosts.unshift(dummyPost(action.data));
+        draft.mainPosts.unshift(action.data);
+        draft.imagePaths = [];
         break;
       case ADD_POST_FAILURE:
         draft.addPostLoading = false;
@@ -147,8 +148,8 @@ const reducer = (state = initialState, action) => {
         draft.addCommentError = null;
         break;
       case ADD_COMMENT_SUCCESS: {
-        const post = draft.mainPosts.find((v) => v.id === action.data.postId);
-        post.Comments.unshift(dummyComments(action.data.content));
+        const post = draft.mainPosts.find((v) => v.id === action.data.PostId);
+        post.Comments.unshift(action.data);
         draft.addCommentLoading = false;
         draft.addCommentDone = true;
         break;
