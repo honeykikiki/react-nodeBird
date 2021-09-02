@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
+const path = require('path');
 
 const postRouter = require('./routes/post');
 const postsRouter = require('./routes/posts');
@@ -32,6 +33,8 @@ app.use(
     credentials: true, // 쿠키를 전해줄떄
   }),
 );
+// 이미지 파일 보여주는 미들웨어
+app.use('/', express.static(path.join(__dirname, 'uploads')));
 
 // 프론트에서 넘어온 데이터를 req.body에 넣어주는 역활을 한다 위치가 중요
 app.use(express.json());
