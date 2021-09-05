@@ -26,7 +26,7 @@
     "linebreak-style": "off",
     "no-param-reassign": "off",
     "prettier/prettier": "error",
-    "eslint-disable-next-line " :"off",
+    "eslint-disable-next-line " :"no-alert",
     "consistent-return": "off",
     "no-unused-expressions" :"off",
     "eslint-disable ":"off",

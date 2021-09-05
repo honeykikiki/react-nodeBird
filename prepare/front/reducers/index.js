@@ -13,22 +13,36 @@ import post from './post';
 
 // changeNickname('kakaka');
 
-const rootReducer = combineReducers({
-  index: (state = {}, action) => {
-    switch (action.type) {
-      case HYDRATE:
-        console.log('HYDRATE', action);
-        return {
-          ...state,
-          ...action.payload,
-        };
+// const rootReducer = combineReducers({
+//   index: (state = {}, action) => {
+//     switch (action.type) {
+//       case HYDRATE:
+//         console.log('HYDRATE', action);
+//         return {
+//           ...state,
+//           ...action.payload,
+//         };
 
-      default:
-        return state;
-    }
-  },
-  user,
-  post,
-});
+//       default:
+//         return state;
+//     }
+//   },
+//   user,
+//   post,
+// });
+
+const rootReducer = (state, action) => {
+  switch (action.type) {
+    case HYDRATE:
+      console.log('HYDRATE', action);
+      return action.payload;
+    default:
+      const combineReducer = combineReducers({
+        user,
+        post,
+      });
+      return combineReducer(state, action);
+  }
+};
 
 export default rootReducer;

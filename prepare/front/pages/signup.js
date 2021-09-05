@@ -2,12 +2,15 @@ import React, { useCallback, useState, useEffect } from 'react';
 import Head from 'next/head';
 import { Checkbox, Form, Input, Button } from 'antd';
 import Router from 'next/router';
+import axios from 'axios';
+import { END } from 'redux-saga';
 
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import AppLayout from '../components/Applayout';
 import useinput from '../hooks/useInput';
-import { SIGN_UP_REQUEST } from '../reducers/user';
+import { SIGN_UP_REQUEST, LOAD_MY_INFO_REQUEST } from '../reducers/user';
+import wrapper from '../store/configureStore';
 // import Password from 'antd/lib/input/Password';
 
 const ErrorMessage = styled.div`
@@ -32,7 +35,6 @@ const Signup = () => {
 
   useEffect(() => {
     if (signUpError) {
-      // eslint-disable-next-line no-alert
       alert(signUpError);
     }
   }, [signUpError]);
@@ -135,5 +137,19 @@ const Signup = () => {
     </>
   );
 };
+
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+  // 로그인이 풀리는 현상, 서버에서 공유하지 않는 쿠키만들기
+  const cookie = req ? req.headers.cookie : '';
+  axios.defaults.headers.Cookie = '';
+  if (req && cookie) {
+    axios.defaults.headers.Cookie = cookie;
+  }
+  store.dispatch({
+    type: LOAD_MY_INFO_REQUEST,
+  });
+  store.dispatch(END);
+  await store.sagaTask.toPromise();
+});
 
 export default Signup;

@@ -153,7 +153,7 @@ document.documentElement.scrollHeight
 
 ## 리엑트 노드버드 8~10일차
 
-### 노드로 서버 구동하기 (express, Postman, MySQL, MySQL Workbench, sequelize, nodemon)
+### 노드로 서버 구동하기 (express, Postman, MySQL, MySQLWorkbench, sequelize, nodemon)
 
 >express : 
     Express.js, 또는 간단히 익스프레스는 Node.js를 위한 웹 프레임워크의 하나로, MIT 허가서로 라이선스되는 자유-오픈 소스 소프트웨어로 출시되었다. 웹 애플리케이션, API 개발을 위해 설계되었다. 
@@ -166,7 +166,7 @@ document.documentElement.scrollHeight
     MySQL은 세계에서 가장 많이 쓰이는 오픈 소스의 관계형 데이터베이스 관리 시스템이다. 다중 스레드, 다중 사용자 형식의 구조질의어 형식의 데이터베이스 관리 시스템으로서 오라클이 관리 및 지원하고 있으며, 
     Qt처럼 이중 라이선스가 적용된다
 
->MySQL Workbench:
+>MySQLWorkbench:
     MySQL 워크벤치(MySQL Workbench)는 SQL 개발과 관리, 데이터베이스 설계, 생성 그리고 유지를 위한 단일 개발 통합 환경을 제공하는 비주얼 데이터베이스 설계 도구이다. 
     fabFORCE.NET의 DBDesigner4의 후속 판이며, 이전 소프트웨어 패키지인 MySQL GUI 툴즈 번들을 대체한 것이다.
 
@@ -184,19 +184,40 @@ document.documentElement.scrollHeight
     passport : 로그인에 필요한 코드들이 들어있는 폴더
     routes : 프론트와 통신하기 위한 폴더
 
+>라우터 분리 :  
+    reutes 폴더에서 user,post로 분리해준다
 
+
+    
 
 ## 리엑트 노드버드 10~일차
 
 ### 노드로 서버 데이터 저장하기 (테이블 만들기, 회원가입, cors문제 해결하기, 로그인, 로그인 쿠키화, dotenv)
 
->테이블 만들기 : 
-    models폴더안에 데이터 저장 파일을 만든다. 
+>mysql 테이블생성 :
+    필요한 테이블들을 만들어 모델이름(테이블)설정 > 엑설을 만든다고 생각한다 (기본정보 등록)
+
+>mysql 관계설정 :
+    각각의 테이블의 관계를 설정해 주어야한다
+    hasone : 일 대 일 관계 : belongTo
+    hasMany : 일 대 다 관계 : belongsTo (00Id 가 생긴다)
+    belongsToMany : 다 대 다 관계 : belongsToMany (중간 테이블이 생겨 서로 관계가 있어 찾을수있다)
+
+> npx sequelize db:create
+    Mysql 테이블 생성
 
 >회원가입 :
-    이메일 겹치는지 확인, 패스워드 암호화, cors문제를 해결했다.
+    1. routes 폴터에 user파일에 프론트에서 데이터를 받아오는 코드를 작성
+    2. 패스워드를 암호와 진행 bcrypt로 진행 (const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    3. 회원가입 cors문제 해결하기
+
+
 
 >로그인 : 
     passport : 아이디 로그인 도와주는 라이브러리
+    passport-local : 로그인을 직접 구현할 때 사용 (로그인 전력세우기)
     session : 세션 데이터는 쿠키 자체에 저장 되지 않고 세션 ID에만 저장됩니다. 세션 데이터는 서버 측에 저장됩니다.
     dotenv : 중요한 모듈들 암호화 (한곳에서 비밀키 관리)
+    findOne로 필요한 정보 추가해주고 뺴고싶은 정보 뺴기
+
+>로그아웃  
