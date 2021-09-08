@@ -30,7 +30,6 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (logInError) {
-      // eslint-disable-next-line no-alert
       alert(logInError);
     }
   }, [logInError]);

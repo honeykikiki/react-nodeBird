@@ -1,6 +1,7 @@
 import produce from 'immer';
 // import shortId from 'shortid';
 // import faker from 'faker';
+import useSWR from 'swr';
 
 export const initialState = {
   mainPosts: [],
@@ -75,6 +76,14 @@ export const LIKE_POST_FAILURE = 'LIKE_POST_FAILURE';
 export const UNLIKE_POST_REQUEST = 'UNLIKE_POST_REQUEST';
 export const UNLIKE_POST_SUCCESS = 'UNLIKE_POST_SUCCESS';
 export const UNLIKE_POST_FAILURE = 'UNLIKE_POST_FAILURE';
+
+export const LOAD_USER_POSTS_REQUEST = 'LOAD_USER_POSTS_REQUEST';
+export const LOAD_USER_POSTS_SUCCESS = 'LOAD_USER_POSTS_SUCCES';
+export const LOAD_USER_POSTS_FAILURE = 'LOAD_USER_POSTS_FAILURE';
+
+export const LOAD_HASHTAG_POSTS_REQUEST = 'LOAD_HASHTAG_POSTS_REQUEST';
+export const LOAD_HASHTAG_POSTS_SUCCESS = 'LOAD_HASHTAG_POSTS_SUCCES';
+export const LOAD_HASHTAG_POSTS_FAILURE = 'LOAD_HASHTAG_POSTS_FAILURE';
 
 export const LOAD_POSTS_REQUEST = 'LOAD_POSTS_REQUEST';
 export const LOAD_POSTS_SUCCESS = 'LOAD_POSTS_SUCCES';
@@ -179,9 +188,14 @@ const reducer = (state = initialState, action) => {
         break;
       case LIKE_POST_SUCCESS: {
         const post = draft.mainPosts.find((v) => v.id === action.data.PostId);
-        post.Likers.push({ id: action.data.UserId });
+        if (post) {
+          post.Likers.push({ id: action.data.UserId });
+        }
         draft.likePostLoading = false;
         draft.likePostDone = true;
+        if (draft.singlePost?.Likers) {
+          draft.singlePost.Likers.push({ id: action.data.UserId });
+        }
         break;
       }
       case LIKE_POST_FAILURE:
@@ -196,9 +210,15 @@ const reducer = (state = initialState, action) => {
         break;
       case UNLIKE_POST_SUCCESS: {
         const post = draft.mainPosts.find((v) => v.id === action.data.PostId);
-        post.Likers = post.Likers.filter((v) => v.id !== action.data.UserId);
+        if (post) {
+          post.Likers = post.Likers.filter((v) => v.id !== action.data.UserId);
+        }
         draft.unlikePostLoading = false;
         draft.unlikePostDone = true;
+        if (draft.singlePost?.Likers) {
+          const index = draft.singlePost.Likers.find((v) => v.id === action.data.UserId);
+          draft.singlePost.Likers.splice(index, 1);
+        }
         break;
       }
       case UNLIKE_POST_FAILURE:
@@ -206,17 +226,23 @@ const reducer = (state = initialState, action) => {
         draft.unlikePostError = action.error;
         break;
 
+      case LOAD_USER_POSTS_REQUEST:
+      case LOAD_HASHTAG_POSTS_REQUEST:
       case LOAD_POSTS_REQUEST:
         draft.loadPostsLoading = true;
         draft.loadPostsDone = false;
         draft.loadPostsError = null;
         break;
+      case LOAD_USER_POSTS_SUCCESS:
+      case LOAD_HASHTAG_POSTS_SUCCESS:
       case LOAD_POSTS_SUCCESS:
         draft.loadPostsLoading = false;
         draft.loadPostsDone = true;
         draft.mainPosts = draft.mainPosts.concat(action.data);
         draft.hasMorePosts = action.data.length === 10;
         break;
+      case LOAD_USER_POSTS_FAILURE:
+      case LOAD_HASHTAG_POSTS_FAILURE:
       case LOAD_POSTS_FAILURE:
         draft.loadPostsLoading = false;
         draft.loadPostsError = action.error;

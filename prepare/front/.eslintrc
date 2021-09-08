@@ -25,12 +25,11 @@
     "object-curly-newline": "off",
     "linebreak-style": "off",
     "no-param-reassign": "off",
-    "prettier/prettier": "error",
-    "eslint-disable-next-line " :"no-alert",
-    "consistent-return": "off",
-    "no-unused-expressions" :"off",
-    "eslint-disable ":"off",
-    "react/prop-types":"off"
 
+    "prettier/prettier": "error",
+    "consistent-return": "off",
+    "eslint-disable ": "off",
+    "react/prop-types": "off",
+    "eslint-disable-next-line": "off"
   }
 }
