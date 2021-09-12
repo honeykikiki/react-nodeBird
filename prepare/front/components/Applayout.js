@@ -1,13 +1,15 @@
 // 레이아웃 파일
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Menu, Input, Row, Col } from 'antd';
 import { useSelector } from 'react-redux';
 
+import Router from 'next/router';
 import LoginForm from './LoginForm';
 import UserProfile from './UserProfile';
+import useInput from '../hooks/useInput';
 
 const Global = createGlobalStyle`
   .ant-row{
@@ -28,6 +30,11 @@ const SerachInput = styled(Input.Search)`
 
 const AppLayout = ({ children }) => {
   const { me } = useSelector((state) => state.user);
+  const [serachInput, onChangeSearchInput] = useInput('');
+
+  const onSearch = useCallback(() => {
+    Router.push(`/hashtag/${serachInput}`);
+  }, [serachInput]);
 
   return (
     <div>
@@ -46,13 +53,12 @@ const AppLayout = ({ children }) => {
         </Menu.Item>
 
         <Menu.Item key="search">
-          <SerachInput enterButton />
-        </Menu.Item>
-
-        <Menu.Item key="signup">
-          <Link href="/signup">
-            <a>회원가입</a>
-          </Link>
+          <SerachInput
+            enterButton
+            value={serachInput}
+            onChange={onChangeSearchInput}
+            onSearch={onSearch}
+          />
         </Menu.Item>
       </Menu>
       <Row gutter={8}>

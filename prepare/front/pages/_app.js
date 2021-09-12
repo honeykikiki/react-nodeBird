@@ -7,7 +7,6 @@ import 'antd/dist/antd.css'; // 엔트 디자인 적용 css컴포넌트
 import wrapper from '../store/configureStore';
 
 const NodeBird = ({ Component }) => {
-  
   return (
     <>
       <Head>

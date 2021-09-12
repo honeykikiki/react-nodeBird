@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport AppLayout from '../../components/Applayout';\n\nvar Contact = function Contact() {\n  return __jsx(AppLayout, null, __jsx(\"div\", null, \"\\uCEE8\\uD150\\uCE20\"));\n};\n\nexport default Contact;","map":null,"metadata":{},"sourceType":"module"}

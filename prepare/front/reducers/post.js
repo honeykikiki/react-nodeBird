@@ -1,7 +1,4 @@
-import produce from 'immer';
-// import shortId from 'shortid';
-// import faker from 'faker';
-import useSWR from 'swr';
+import produce from '../util/produce';
 
 export const initialState = {
   mainPosts: [],
