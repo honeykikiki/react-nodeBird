@@ -1,6 +1,7 @@
 .env
 # [D[
 [D[.pub
+.pub
 .pem
 react-nodebird.pem
 .next
