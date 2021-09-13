@@ -9,8 +9,8 @@ import Head from 'next/head';
 import wrapper from '../../store/configureStore';
 import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
 import { LOAD_POST_REQUEST } from '../../reducers/post';
-import AppLayout from '../../components/AppLayout';
 import PostCard from '../../components/PostCard';
+import AppLayout from '../../components/AppLayout';
 
 const Post = () => {
   const router = useRouter();
