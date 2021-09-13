@@ -54,6 +54,7 @@ const Post = () => {
 //     fallback: true,
 //   };
 // }
+
 export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req, params }) => {
   const cookie = req ? req.headers.cookie : '';
   axios.defaults.headers.Cookie = '';
