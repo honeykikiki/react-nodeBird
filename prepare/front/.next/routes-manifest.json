@@ -1,5 +1,58 @@
-<<<<<<< HEAD
-{"version":3,"pages404":true,"basePath":"","redirects":[{"source":"/:path+/","destination":"/:path+","statusCode":308,"regex":"^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"}],"rewrites":[],"headers":[],"dynamicRoutes":[{"page":"/hashtag/[tag]","regex":"^/hashtag/([^/]+?)(?:/)?$","routeKeys":{"tag":"tag"},"namedRegex":"^/hashtag/(?<tag>[^/]+?)(?:/)?$"},{"page":"/post/[id]","regex":"^/post/([^/]+?)(?:/)?$","routeKeys":{"id":"id"},"namedRegex":"^/post/(?<id>[^/]+?)(?:/)?$"},{"page":"/user/[id]","regex":"^/user/([^/]+?)(?:/)?$","routeKeys":{"id":"id"},"namedRegex":"^/user/(?<id>[^/]+?)(?:/)?$"}],"dataRoutes":[{"page":"/","dataRouteRegex":"^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/index.json$"},{"page":"/hashtag/[tag]","routeKeys":{"tag":"tag"},"dataRouteRegex":"^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/hashtag/([^/]+?)\\.json$","namedDataRouteRegex":"^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/hashtag/(?<tag>[^/]+?)\\.json$"},{"page":"/post/[id]","routeKeys":{"id":"id"},"dataRouteRegex":"^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/post/([^/]+?)\\.json$","namedDataRouteRegex":"^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/post/(?<id>[^/]+?)\\.json$"},{"page":"/profile","dataRouteRegex":"^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/profile.json$"},{"page":"/signup","dataRouteRegex":"^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/signup.json$"},{"page":"/user/[id]","routeKeys":{"id":"id"},"dataRouteRegex":"^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/user/([^/]+?)\\.json$","namedDataRouteRegex":"^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/user/(?<id>[^/]+?)\\.json$"}]}
-=======
-{"version":3,"pages404":true,"basePath":"","redirects":[{"source":"/:path+/","destination":"/:path+","statusCode":308,"regex":"^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"}],"rewrites":[],"headers":[],"dynamicRoutes":[{"page":"/hashtag/[tag]","regex":"^/hashtag/([^/]+?)(?:/)?$","routeKeys":{"tag":"tag"},"namedRegex":"^/hashtag/(?<tag>[^/]+?)(?:/)?$"},{"page":"/post/[id]","regex":"^/post/([^/]+?)(?:/)?$","routeKeys":{"id":"id"},"namedRegex":"^/post/(?<id>[^/]+?)(?:/)?$"},{"page":"/user/[id]","regex":"^/user/([^/]+?)(?:/)?$","routeKeys":{"id":"id"},"namedRegex":"^/user/(?<id>[^/]+?)(?:/)?$"}],"dataRoutes":[{"page":"/","dataRouteRegex":"^/_next/data/hFAv2z4jyT4Yrv5ggnSZ9/index.json$"},{"page":"/hashtag/[tag]","routeKeys":{"tag":"tag"},"dataRouteRegex":"^/_next/data/hFAv2z4jyT4Yrv5ggnSZ9/hashtag/([^/]+?)\\.json$","namedDataRouteRegex":"^/_next/data/hFAv2z4jyT4Yrv5ggnSZ9/hashtag/(?<tag>[^/]+?)\\.json$"},{"page":"/post/[id]","routeKeys":{"id":"id"},"dataRouteRegex":"^/_next/data/hFAv2z4jyT4Yrv5ggnSZ9/post/([^/]+?)\\.json$","namedDataRouteRegex":"^/_next/data/hFAv2z4jyT4Yrv5ggnSZ9/post/(?<id>[^/]+?)\\.json$"},{"page":"/profile","dataRouteRegex":"^/_next/data/hFAv2z4jyT4Yrv5ggnSZ9/profile.json$"},{"page":"/signup","dataRouteRegex":"^/_next/data/hFAv2z4jyT4Yrv5ggnSZ9/signup.json$"},{"page":"/user/[id]","routeKeys":{"id":"id"},"dataRouteRegex":"^/_next/data/hFAv2z4jyT4Yrv5ggnSZ9/user/([^/]+?)\\.json$","namedDataRouteRegex":"^/_next/data/hFAv2z4jyT4Yrv5ggnSZ9/user/(?<id>[^/]+?)\\.json$"}]}
->>>>>>> 2ca606775520f4c5c4ce8df45e1550f210c2d867
+{
+  "version": 3,
+  "pages404": true,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "rewrites": [],
+  "headers": [],
+  "dynamicRoutes": [
+    {
+      "page": "/hashtag/[tag]",
+      "regex": "^/hashtag/([^/]+?)(?:/)?$",
+      "routeKeys": { "tag": "tag" },
+      "namedRegex": "^/hashtag/(?<tag>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/post/[id]",
+      "regex": "^/post/([^/]+?)(?:/)?$",
+      "routeKeys": { "id": "id" },
+      "namedRegex": "^/post/(?<id>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/user/[id]",
+      "regex": "^/user/([^/]+?)(?:/)?$",
+      "routeKeys": { "id": "id" },
+      "namedRegex": "^/user/(?<id>[^/]+?)(?:/)?$"
+    }
+  ],
+  "dataRoutes": [
+    { "page": "/", "dataRouteRegex": "^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/index.json$" },
+    {
+      "page": "/hashtag/[tag]",
+      "routeKeys": { "tag": "tag" },
+      "dataRouteRegex": "^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/hashtag/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/hashtag/(?<tag>[^/]+?)\\.json$"
+    },
+    {
+      "page": "/post/[id]",
+      "routeKeys": { "id": "id" },
+      "dataRouteRegex": "^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/post/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/post/(?<id>[^/]+?)\\.json$"
+    },
+    { "page": "/profile", "dataRouteRegex": "^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/profile.json$" },
+    { "page": "/signup", "dataRouteRegex": "^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/signup.json$" },
+    {
+      "page": "/user/[id]",
+      "routeKeys": { "id": "id" },
+      "dataRouteRegex": "^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/user/([^/]+?)\\.json$",
+      "namedDataRouteRegex": "^/_next/data/6UzAm\\-3Z70pDec8QYIiYx/user/(?<id>[^/]+?)\\.json$"
+    }
+  ]
+}
