@@ -150,6 +150,218 @@ module.exports = require("redux-saga");
 
 /***/ }),
 
+/***/ "1zst":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXTERNAL MODULE: external "react"
+var external_react_ = __webpack_require__("cDcd");
+var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
+
+// EXTERNAL MODULE: external "styled-components"
+var external_styled_components_ = __webpack_require__("Dtiu");
+var external_styled_components_default = /*#__PURE__*/__webpack_require__.n(external_styled_components_);
+
+// EXTERNAL MODULE: ./node_modules/next/link.js
+var next_link = __webpack_require__("YFqc");
+var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
+
+// EXTERNAL MODULE: external "antd"
+var external_antd_ = __webpack_require__("Exp3");
+
+// EXTERNAL MODULE: external "react-redux"
+var external_react_redux_ = __webpack_require__("h74D");
+
+// EXTERNAL MODULE: external "next/router"
+var router_ = __webpack_require__("4Q3z");
+var router_default = /*#__PURE__*/__webpack_require__.n(router_);
+
+// EXTERNAL MODULE: ./hooks/useInput.js
+var useInput = __webpack_require__("3zrx");
+
+// EXTERNAL MODULE: ./reducers/user.js
+var user = __webpack_require__("LAVF");
+
+// CONCATENATED MODULE: ./components/LoginForm.js
+var __jsx = external_react_default.a.createElement;
+
+
+
+
+
+
+
+const ButtonWrapper = external_styled_components_default.a.div.withConfig({
+  displayName: "LoginForm__ButtonWrapper",
+  componentId: "sc-k4bay5-0"
+})(["margin-top:10px;"]); // const ButtonStyle = styled(Button)`
+//   color: red;
+//   background-color: green;
+// `;
+
+const FormWrapper = external_styled_components_default()(external_antd_["Form"]).withConfig({
+  displayName: "LoginForm__FormWrapper",
+  componentId: "sc-k4bay5-1"
+})(["padding:10px;"]);
+
+const LoginForm = () => {
+  const dispatch = Object(external_react_redux_["useDispatch"])();
+  const {
+    logInLoading,
+    logInError
+  } = Object(external_react_redux_["useSelector"])(state => state.user);
+  const [email, onChangeEmail] = Object(useInput["a" /* default */])('');
+  const [password, onchangePassword] = Object(useInput["a" /* default */])(''); // const style = useMemo(() => ({ marginTop: 10 }), []); // 스타일컴포넌트 쓰기 싫을떄
+
+  Object(external_react_["useEffect"])(() => {
+    if (logInError) {
+      alert(logInError);
+    }
+  }, [logInError]);
+  const onSubmitForm = Object(external_react_["useCallback"])(() => {
+    console.log(email, password);
+    dispatch(Object(user["J" /* loginRequestAction */])({
+      email,
+      password
+    }));
+  }, [email, password]);
+  return __jsx(FormWrapper, {
+    onFinish: onSubmitForm
+  }, __jsx("div", null, __jsx("label", {
+    htmlFor: "user-email"
+  }, "\uC774\uBA54\uC77C"), __jsx("br", null), __jsx(external_antd_["Input"], {
+    name: "user-email",
+    type: "email",
+    value: email,
+    onChange: onChangeEmail,
+    required: true
+  })), __jsx("div", null, __jsx("label", {
+    htmlFor: "user-password"
+  }, "\uBE44\uBC00\uBC88\uD638"), __jsx("br", null), __jsx(external_antd_["Input"], {
+    name: "user-password",
+    type: "password",
+    value: password,
+    onChange: onchangePassword,
+    required: true
+  })), __jsx(ButtonWrapper, null, __jsx(external_antd_["Button"], {
+    type: "primary",
+    htmlType: "submit",
+    loading: logInLoading
+  }, "\uB85C\uADF8\uC778"), __jsx(link_default.a, {
+    href: "/signup"
+  }, __jsx("a", null, __jsx(external_antd_["Button"], null, "\uD68C\uC6D0\uAC00\uC785")))));
+};
+
+/* harmony default export */ var components_LoginForm = (LoginForm);
+// CONCATENATED MODULE: ./components/UserProfile.js
+var UserProfile_jsx = external_react_default.a.createElement;
+
+
+
+
+
+
+const UserProfile = () => {
+  const dispatch = Object(external_react_redux_["useDispatch"])();
+  const {
+    me,
+    logOutLoadind
+  } = Object(external_react_redux_["useSelector"])(state => state.user);
+  const onLogOut = Object(external_react_["useCallback"])(() => {
+    dispatch(Object(user["K" /* logoutRequestAction */])());
+  }, []);
+  return UserProfile_jsx(external_antd_["Card"], {
+    actions: [UserProfile_jsx("div", {
+      key: "twit"
+    }, UserProfile_jsx(link_default.a, {
+      href: `/user/${me.id}`
+    }, UserProfile_jsx("a", null, "\uC9F9\uCA31 ", UserProfile_jsx("br", null), me.Posts.length))), UserProfile_jsx("div", {
+      key: "followings"
+    }, UserProfile_jsx(link_default.a, {
+      href: "/profile"
+    }, UserProfile_jsx("a", null, "\uD314\uB85C\uC789 ", UserProfile_jsx("br", null), me.Followings.length))), UserProfile_jsx("div", {
+      key: "followings"
+    }, UserProfile_jsx(link_default.a, {
+      href: "/profile"
+    }, UserProfile_jsx("a", null, "\uD314\uB85C\uC6CC ", UserProfile_jsx("br", null), me.Followers.length)))]
+  }, UserProfile_jsx(external_antd_["Card"].Meta, {
+    avatar: UserProfile_jsx(external_antd_["Avatar"], null, me.nickname[0]),
+    title: me.nickname
+  }), UserProfile_jsx(external_antd_["Button"], {
+    onClick: onLogOut,
+    loading: logOutLoadind
+  }, "\uB85C\uADF8\uC544\uC6C3"));
+};
+
+/* harmony default export */ var components_UserProfile = (UserProfile);
+// CONCATENATED MODULE: ./components/AppLayout.js
+var AppLayout_jsx = external_react_default.a.createElement;
+// 레이아웃 파일
+
+
+
+
+
+
+
+
+
+const Global = Object(external_styled_components_["createGlobalStyle"])([".ant-row{margin-right:0 !important;margin-left:0 !important;}.ant-clo:first-child{padding-left:0 !important;}.ant-col:last-child{padding-right:0 !important;}"]);
+const SerachInput = external_styled_components_default()(external_antd_["Input"].Search).withConfig({
+  displayName: "AppLayout__SerachInput",
+  componentId: "sc-1x6xxdo-0"
+})(["vertical-align:middle;"]);
+
+const AppLayout = ({
+  children
+}) => {
+  const {
+    me
+  } = Object(external_react_redux_["useSelector"])(state => state.user);
+  const [serachInput, onChangeSearchInput] = Object(useInput["a" /* default */])('');
+  const onSearch = Object(external_react_["useCallback"])(() => {
+    router_default.a.push(`/hashtag/${serachInput}`);
+  }, [serachInput]);
+  return AppLayout_jsx("div", null, AppLayout_jsx(Global, null), AppLayout_jsx(external_antd_["Menu"], {
+    mode: "horizontal"
+  }, AppLayout_jsx(external_antd_["Menu"].Item, {
+    key: "home"
+  }, AppLayout_jsx(link_default.a, {
+    href: "/"
+  }, AppLayout_jsx("a", null, "\uB178\uB4DC\uBC84\uB4DC"))), AppLayout_jsx(external_antd_["Menu"].Item, {
+    key: "profile"
+  }, AppLayout_jsx(link_default.a, {
+    href: "/profile"
+  }, AppLayout_jsx("a", null, "\uD504\uB85C\uD544"))), AppLayout_jsx(external_antd_["Menu"].Item, {
+    key: "search"
+  }, AppLayout_jsx(SerachInput, {
+    enterButton: true,
+    value: serachInput,
+    onChange: onChangeSearchInput,
+    onSearch: onSearch
+  }))), AppLayout_jsx(external_antd_["Row"], {
+    gutter: 8
+  }, AppLayout_jsx(external_antd_["Col"], {
+    xs: 24,
+    md: 6
+  }, me ? AppLayout_jsx(components_UserProfile, null) : AppLayout_jsx(components_LoginForm, null)), AppLayout_jsx(external_antd_["Col"], {
+    xs: 24,
+    md: 12
+  }, children), AppLayout_jsx(external_antd_["Col"], {
+    xs: 24,
+    md: 6
+  }, AppLayout_jsx("a", {
+    href: "https://www.zerocho.com",
+    target: "_blank",
+    rel: "noreferrer noopener"
+  }, "zerocho"))));
+};
+
+/* harmony default export */ var components_AppLayout = __webpack_exports__["a"] = (AppLayout);
+
+/***/ }),
+
 /***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -430,95 +642,6 @@ function formatUrl(urlObj) {
   search = search.replace('#', '%23');
   return `${protocol}${host}${pathname}${search}${hash}`;
 }
-
-/***/ }),
-
-/***/ "A0h5":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("Exp3");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("YFqc");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("Dtiu");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("h74D");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _hooks_useInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("3zrx");
-/* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("LAVF");
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-
-
-
-
-
-const ButtonWrapper = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
-  displayName: "LoginForm__ButtonWrapper",
-  componentId: "sc-k4bay5-0"
-})(["margin-top:10px;"]); // const ButtonStyle = styled(Button)`
-//   color: red;
-//   background-color: green;
-// `;
-
-const FormWrapper = styled_components__WEBPACK_IMPORTED_MODULE_3___default()(antd__WEBPACK_IMPORTED_MODULE_1__["Form"]).withConfig({
-  displayName: "LoginForm__FormWrapper",
-  componentId: "sc-k4bay5-1"
-})(["padding:10px;"]);
-
-const LoginForm = () => {
-  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useDispatch"])();
-  const {
-    logInLoading,
-    logInError
-  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useSelector"])(state => state.user);
-  const [email, onChangeEmail] = Object(_hooks_useInput__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])('');
-  const [password, onchangePassword] = Object(_hooks_useInput__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(''); // const style = useMemo(() => ({ marginTop: 10 }), []); // 스타일컴포넌트 쓰기 싫을떄
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    if (logInError) {
-      alert(logInError);
-    }
-  }, [logInError]);
-  const onSubmitForm = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(() => {
-    console.log(email, password);
-    dispatch(Object(_reducers_user__WEBPACK_IMPORTED_MODULE_6__[/* loginRequestAction */ "J"])({
-      email,
-      password
-    }));
-  }, [email, password]);
-  return __jsx(FormWrapper, {
-    onFinish: onSubmitForm
-  }, __jsx("div", null, __jsx("label", {
-    htmlFor: "user-email"
-  }, "\uC774\uBA54\uC77C"), __jsx("br", null), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-    name: "user-email",
-    type: "email",
-    value: email,
-    onChange: onChangeEmail,
-    required: true
-  })), __jsx("div", null, __jsx("label", {
-    htmlFor: "user-password"
-  }, "\uBE44\uBC00\uBC88\uD638"), __jsx("br", null), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Input"], {
-    name: "user-password",
-    type: "password",
-    value: password,
-    onChange: onchangePassword,
-    required: true
-  })), __jsx(ButtonWrapper, null, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    type: "primary",
-    htmlType: "submit",
-    loading: logInLoading
-  }, "\uB85C\uADF8\uC778"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/signup"
-  }, __jsx("a", null, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Button"], null, "\uD68C\uC6D0\uAC00\uC785")))));
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (LoginForm);
 
 /***/ }),
 
@@ -1205,62 +1328,6 @@ module.exports = require("antd");
 
 /***/ }),
 
-/***/ "J7m/":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("Exp3");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("h74D");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("YFqc");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("LAVF");
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-
-
-
-
-const UserProfile = () => {
-  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useDispatch"])();
-  const {
-    me,
-    logOutLoadind
-  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(state => state.user);
-  const onLogOut = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(() => {
-    dispatch(Object(_reducers_user__WEBPACK_IMPORTED_MODULE_4__[/* logoutRequestAction */ "K"])());
-  }, []);
-  return __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-    actions: [__jsx("div", {
-      key: "twit"
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: `/user/${me.id}`
-    }, __jsx("a", null, "\uC9F9\uCA31 ", __jsx("br", null), me.Posts.length))), __jsx("div", {
-      key: "followings"
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "/profile"
-    }, __jsx("a", null, "\uD314\uB85C\uC789 ", __jsx("br", null), me.Followings.length))), __jsx("div", {
-      key: "followings"
-    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
-      href: "/profile"
-    }, __jsx("a", null, "\uD314\uB85C\uC6CC ", __jsx("br", null), me.Followers.length)))]
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Card"].Meta, {
-    avatar: __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Avatar"], null, me.nickname[0]),
-    title: me.nickname
-  }), __jsx(antd__WEBPACK_IMPORTED_MODULE_1__["Button"], {
-    onClick: onLogOut,
-    loading: logOutLoadind
-  }, "\uB85C\uADF8\uC544\uC6C3"));
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (UserProfile);
-
-/***/ }),
-
 /***/ "JMOJ":
 /***/ (function(module, exports) {
 
@@ -1714,7 +1781,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PostCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("kduo");
 /* harmony import */ var _store_configureStore__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("AQn3");
 /* harmony import */ var _reducers_user__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("LAVF");
-/* harmony import */ var _components_Applayout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("zush");
+/* harmony import */ var _components_AppLayout__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__("1zst");
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 // hashtag/[tag].js
 
@@ -1751,7 +1818,7 @@ const Hashtag = () => {
       });
     }
   }, [hasMorePosts, loadPostsLoading, mainPosts, tag]);
-  return __jsx(_components_Applayout__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"], null, mainPosts.map(c => __jsx(_components_PostCard__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"], {
+  return __jsx(_components_AppLayout__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"], null, mainPosts.map(c => __jsx(_components_PostCard__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"], {
     key: c.id,
     post: c
   })), __jsx("div", {
@@ -4458,91 +4525,6 @@ module.exports = require("moment");
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
-
-/***/ }),
-
-/***/ "zush":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("cDcd");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("Dtiu");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("YFqc");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("Exp3");
-/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(antd__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("h74D");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("4Q3z");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _LoginForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("A0h5");
-/* harmony import */ var _UserProfile__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("J7m/");
-/* harmony import */ var _hooks_useInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("3zrx");
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-// 레이아웃 파일
-
-
-
-
-
-
-
-
-
-const Global = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["createGlobalStyle"])([".ant-row{margin-right:0 !important;margin-left:0 !important;}.ant-clo:first-child{padding-left:0 !important;}.ant-col:last-child{padding-right:0 !important;}"]);
-const SerachInput = styled_components__WEBPACK_IMPORTED_MODULE_1___default()(antd__WEBPACK_IMPORTED_MODULE_3__["Input"].Search).withConfig({
-  displayName: "Applayout__SerachInput",
-  componentId: "sc-ysqohd-0"
-})(["vertical-align:middle;"]);
-
-const AppLayout = ({
-  children
-}) => {
-  const {
-    me
-  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useSelector"])(state => state.user);
-  const [serachInput, onChangeSearchInput] = Object(_hooks_useInput__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"])('');
-  const onSearch = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(() => {
-    next_router__WEBPACK_IMPORTED_MODULE_5___default.a.push(`/hashtag/${serachInput}`);
-  }, [serachInput]);
-  return __jsx("div", null, __jsx(Global, null), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"], {
-    mode: "horizontal"
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
-    key: "home"
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/"
-  }, __jsx("a", null, "\uB178\uB4DC\uBC84\uB4DC"))), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
-    key: "profile"
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
-    href: "/profile"
-  }, __jsx("a", null, "\uD504\uB85C\uD544"))), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Menu"].Item, {
-    key: "search"
-  }, __jsx(SerachInput, {
-    enterButton: true,
-    value: serachInput,
-    onChange: onChangeSearchInput,
-    onSearch: onSearch
-  }))), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Row"], {
-    gutter: 8
-  }, __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    xs: 24,
-    md: 6
-  }, me ? __jsx(_UserProfile__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"], null) : __jsx(_LoginForm__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"], null)), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    xs: 24,
-    md: 12
-  }, children), __jsx(antd__WEBPACK_IMPORTED_MODULE_3__["Col"], {
-    xs: 24,
-    md: 6
-  }, __jsx("a", {
-    href: "https://www.zerocho.com",
-    target: "_blank",
-    rel: "noreferrer noopener"
-  }, "zerocho"))));
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (AppLayout);
 
 /***/ })
 

@@ -1,14 +1,15 @@
 // 레이아웃 파일
+
 import React, { useCallback } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Menu, Input, Row, Col } from 'antd';
+import styled from 'styled-components';
 import { useSelector } from 'react-redux';
+import Router, { useRouter } from 'next/router';
 
-import Router from 'next/router';
-import LoginForm from './LoginForm';
 import UserProfile from './UserProfile';
+import LoginForm from './LoginForm';
 import useInput from '../hooks/useInput';
 
 const Global = createGlobalStyle`
@@ -30,6 +31,8 @@ const SerachInput = styled(Input.Search)`
 
 const AppLayout = ({ children }) => {
   const { me } = useSelector((state) => state.user);
+  const router = useRouter();
+
   const [serachInput, onChangeSearchInput] = useInput('');
 
   const onSearch = useCallback(() => {
@@ -39,7 +42,7 @@ const AppLayout = ({ children }) => {
   return (
     <div>
       <Global />
-      <Menu mode="horizontal">
+      <Menu mode="horizontal" selectedKeys={[router.pathname]}>
         <Menu.Item key="home">
           <Link href="/">
             <a>노드버드</a>
