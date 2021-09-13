@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import AppLayout from '../components/AppLayout';
 import useinput from '../hooks/useinput';
+
 import { SIGN_UP_REQUEST, LOAD_MY_INFO_REQUEST } from '../reducers/user';
 import wrapper from '../store/configureStore';
 // import Password from 'antd/lib/input/Password';
