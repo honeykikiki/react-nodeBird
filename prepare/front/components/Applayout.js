@@ -38,7 +38,6 @@ const AppLayout = ({ children }) => {
 
   return (
     <div>
-      <Global />
       <Menu mode="horizontal">
         <Menu.Item key="home">
           <Link href="/">
