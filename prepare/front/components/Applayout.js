@@ -11,18 +11,18 @@ import LoginForm from './LoginForm';
 import UserProfile from './UserProfile';
 import useInput from '../hooks/useInput';
 
-const Global = createGlobalStyle`
-  .ant-row{
-    margin-right: 0 !important;
-    margin-left: 0 !important;
-  }
-  .ant-clo:first-child {
-    padding-left:0 !important ;
-  }
-  .ant-col:last-child{
-    padding-right: 0 !important;
-  }
-`;
+// const Global = createGlobalStyle`
+//   .ant-row{
+//     margin-right: 0 !important;
+//     margin-left: 0 !important;
+//   }
+//   .ant-clo:first-child {
+//     padding-left:0 !important ;
+//   }
+//   .ant-col:last-child{
+//     padding-right: 0 !important;
+//   }
+// `;
 
 const SerachInput = styled(Input.Search)`
   vertical-align: middle;
