@@ -1,4 +1,4 @@
-// post/[id].js
+/ post/[id].js;
 import React from 'react';
 import { useRouter } from 'next/router';
 import { END } from 'redux-saga';

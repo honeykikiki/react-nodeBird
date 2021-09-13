@@ -6,7 +6,7 @@ import { END } from 'redux-saga';
 import useSWR from 'swr';
 
 import Router from 'next/router';
-import AppLayout from '../components/Applayout';
+import AppLayout from '../components/AppLayout';
 import NicknameEditForm from '../components/NicknameEditForm';
 import FollowList from '../components/FollowList';
 import wrapper from '../store/configureStore';
