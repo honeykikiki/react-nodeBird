@@ -1,4 +1,4 @@
-// post/[id].js
+/ post/[id].js;
 import React from 'react';
 import { useRouter } from 'next/router';
 import { END } from 'redux-saga';
@@ -9,8 +9,8 @@ import Head from 'next/head';
 import wrapper from '../../store/configureStore';
 import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
 import { LOAD_POST_REQUEST } from '../../reducers/post';
-import PostCard from '../../components/PostCard';
 import AppLayout from '../../components/AppLayout';
+import PostCard from '../../components/PostCard';
 
 const Post = () => {
   const router = useRouter();
@@ -22,7 +22,7 @@ const Post = () => {
   // }
 
   return (
-    <>
+    <AppLayout>
       <Head>
         <title>
           {singlePost.User.nickname}
@@ -39,10 +39,8 @@ const Post = () => {
         />
         <meta property="og:url" content={`https://nodebird.com/post/${id}`} />
       </Head>
-      <AppLayout>
-        <PostCard post={singlePost} />
-      </AppLayout>
-    </>
+      <PostCard post={singlePost} />
+    </AppLayout>
   );
 };
 
