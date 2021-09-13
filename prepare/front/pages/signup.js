@@ -7,7 +7,7 @@ import { END } from 'redux-saga';
 
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import AppLayout from '../components/Applayout';
+import AppLayout from '../components/AppLayout';
 import useinput from '../hooks/useInput';
 import { SIGN_UP_REQUEST, LOAD_MY_INFO_REQUEST } from '../reducers/user';
 import wrapper from '../store/configureStore';
