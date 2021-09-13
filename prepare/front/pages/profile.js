@@ -12,6 +12,7 @@ import FollowList from '../components/FollowList';
 import wrapper from '../store/configureStore';
 
 import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
+import { backUrl } from '../config/config';
 
 const fetcher = (url) => axios.get(url, { withCredentials: true }).then((result) => result.data);
 const Profile = () => {
@@ -22,12 +23,12 @@ const Profile = () => {
   const { me } = useSelector((state) => state.user);
 
   const { data: followingsData, error: followingError } = useSWR(
-    `http://localhost:3065/user/followings?limit=${followersLimit}`,
+    `${backUrl}/user/followings?limit=${followersLimit}`,
     fetcher,
   );
 
   const { data: followersData, error: followerError } = useSWR(
-    `http://localhost:3065/user/followers?limit=${followingsLimit}`,
+    `${backUrl}/user/followers?limit=${followingsLimit}`,
     fetcher,
   );
 
