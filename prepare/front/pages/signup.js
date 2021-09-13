@@ -8,7 +8,7 @@ import { END } from 'redux-saga';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import AppLayout from '../components/AppLayout';
-import useinput from '../hooks/useInput';
+import useInput from '../hooks/useInput';
 import { SIGN_UP_REQUEST, LOAD_MY_INFO_REQUEST } from '../reducers/user';
 import wrapper from '../store/configureStore';
 // import Password from 'antd/lib/input/Password';
@@ -39,9 +39,9 @@ const Signup = () => {
     }
   }, [signUpError]);
 
-  const [email, onchangeEmail] = useinput('');
-  const [nickname, onchangeNickname] = useinput('');
-  const [password, onchangePassword] = useinput('');
+  const [email, onchangeEmail] = useInput('');
+  const [nickname, onchangeNickname] = useInput('');
+  const [password, onchangePassword] = useInput('');
 
   const [passwordCheck, setPasswordCheck] = useState('');
   const [passwordError, setPasswordError] = useState(false);
