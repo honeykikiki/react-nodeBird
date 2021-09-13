@@ -22,7 +22,7 @@ const Post = () => {
   // }
 
   return (
-    <AppLayout>
+    <>
       <Head>
         <title>
           {singlePost.User.nickname}
@@ -39,8 +39,10 @@ const Post = () => {
         />
         <meta property="og:url" content={`https://nodebird.com/post/${id}`} />
       </Head>
-      <PostCard post={singlePost} />
-    </AppLayout>
+      <AppLayout>
+        <PostCard post={singlePost} />
+      </AppLayout>
+    </>
   );
 };
 
