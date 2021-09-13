@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
-import useInput from '../hooks/useInput';
+import useinput from '../hooks/useinput';
 import { loginRequestAction } from '../reducers/user';
 
 const ButtonWrapper = styled.div`
@@ -23,8 +23,8 @@ const FormWrapper = styled(Form)`
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { logInLoading, logInError } = useSelector((state) => state.user);
-  const [email, onChangeEmail] = useInput('');
-  const [password, onchangePassword] = useInput('');
+  const [email, onChangeEmail] = useinput('');
+  const [password, onchangePassword] = useinput('');
 
   // const style = useMemo(() => ({ marginTop: 10 }), []); // 스타일컴포넌트 쓰기 싫을떄
 

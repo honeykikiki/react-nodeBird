@@ -10,7 +10,7 @@ import Router, { useRouter } from 'next/router';
 
 import UserProfile from './UserProfile';
 import LoginForm from './LoginForm';
-import useInput from '../hooks/useInput';
+import useinput from '../hooks/useinput';
 
 // const Global = createGlobalStyle`
 //   .ant-row{
@@ -33,7 +33,7 @@ const AppLayout = ({ children }) => {
   const { me } = useSelector((state) => state.user);
   const router = useRouter();
 
-  const [serachInput, onChangeSearchInput] = useInput('');
+  const [serachInput, onChangeSearchInput] = useinput('');
 
   const onSearch = useCallback(() => {
     Router.push(`/hashtag/${serachInput}`);

@@ -3,14 +3,14 @@ import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
-import useInput from '../hooks/useInput';
+import useinput from '../hooks/useinput';
 import { ADD_COMMENT_REQUEST } from '../reducers/post';
 
 const CommentForm = ({ post }) => {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.user.me?.id);
   const { addCommentDone, addCommentLoading } = useSelector((state) => state.post);
-  const [commentText, onChangeCommentText, setCommentText] = useInput('');
+  const [commentText, onChangeCommentText, setCommentText] = useinput('');
 
   useEffect(() => {
     if (addCommentDone) {
