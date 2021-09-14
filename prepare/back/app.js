@@ -41,7 +41,7 @@ app.use(
     origin: [
       'http://localhost:3060',
       'nodebird.com',
-      'http://13.125.250.89/',
+      'http://52.78.101.253/',
       'http://localhost:80',
     ], // 허용하는 페이지 주소
     credentials: true, // 쿠키를 전해줄떄
