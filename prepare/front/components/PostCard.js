@@ -36,7 +36,7 @@ const PostCard = ({ post }) => {
 
   const onLike = useCallback(() => {
     if (!id) {
-      return customAlert('로그인이 필요합니다.');
+      return alert('로그인이 필요합니다.');
     }
     return dispatch({
       type: LIKE_POST_REQUEST,
