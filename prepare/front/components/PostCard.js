@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 import React, { useState, useCallback } from 'react';
 import { Card, Button, Avatar, Popover, Comment, List } from 'antd';
 import PropTypes from 'prop-types';
@@ -37,7 +36,7 @@ const PostCard = ({ post }) => {
 
   const onLike = useCallback(() => {
     if (!id) {
-      return alert('로그인이 필요합니다.');
+      return customAlert('로그인이 필요합니다.');
     }
     return dispatch({
       type: LIKE_POST_REQUEST,

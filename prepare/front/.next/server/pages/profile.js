@@ -225,7 +225,11 @@ const Profile = () => {
   }, []);
 
   if (!me) {
+<<<<<<< HEAD
     return `내정보 로딩중...`;
+=======
+    return '내정보 로딩중...';
+>>>>>>> 063cf20d2dbea6ed587dff7c297b0bc8863bcffa
   }
 
   if (followerError || followingError) {

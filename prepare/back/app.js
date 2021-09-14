@@ -83,6 +83,6 @@ app.use('/hashtag', hashtagRouter);
 
 // app.use((err,req,res,next)=> {}) // 어러처리 미들웨어 에러를 특별하게 할떄
 
-app.listen(3065, () => {
+app.listen(80, () => {
   console.log('서버 실행 중');
 });
