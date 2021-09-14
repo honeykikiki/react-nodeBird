@@ -56,7 +56,7 @@ const Profile = () => {
   }, []);
 
   if (!me) {
-    return `내정보 로딩중...`;
+    return '내정보 로딩중...';
   }
 
   if (followerError || followingError) {
