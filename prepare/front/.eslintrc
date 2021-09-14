@@ -28,7 +28,8 @@
 
     "prettier/prettier": "error",
     "consistent-return": "off",
-    "eslint-disable ": "on",
-    "react/prop-types": "off"
+    "eslint-disable ": "off",
+    "react/prop-types": "off",
+    "eslint-disable-next-line": "no-alert"
   }
 }
