@@ -1770,7 +1770,7 @@ const reducer = (state = initialState, action) => {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return backUrl; });
-const backUrl = 'http://3.35.10.41/';
+const backUrl = 'http://3.38.60.188/';
 
 /***/ }),
 
