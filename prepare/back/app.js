@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === 'production') {
 // cors문제 해결
 app.use(
   cors({
-    origin: ['http://localhost:3060', 'nodebird.com', 'http://52.79.192.176/'], // 허용하는 페이지 주소
+    origin: ['http://localhost:3060', 'nodebird.com', 'http://13.125.250.89/'], // 허용하는 페이지 주소
     credentials: true, // 쿠키를 전해줄떄
   }),
 );
