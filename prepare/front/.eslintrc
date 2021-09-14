@@ -28,7 +28,7 @@
 
     "prettier/prettier": "error",
     "consistent-return": "off",
-    "eslint-disable ": "no-undef",
+    "eslint-disable ": "off",
     "react/prop-types": "off"
   }
 }

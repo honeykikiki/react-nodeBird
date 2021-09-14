@@ -5,13 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-<<<<<<< HEAD
-    "static/3-gFIaPUhBb9Pn7NacaBN/_buildManifest.js",
-    "static/3-gFIaPUhBb9Pn7NacaBN/_ssgManifest.js"
-=======
-    "static/ETy0iKB0JXmFUnq3c5DAR/_buildManifest.js",
-    "static/ETy0iKB0JXmFUnq3c5DAR/_ssgManifest.js"
->>>>>>> 063cf20d2dbea6ed587dff7c297b0bc8863bcffa
+    "static/fEhVV1HTo_ne43SBDXQbn/_buildManifest.js",
+    "static/fEhVV1HTo_ne43SBDXQbn/_ssgManifest.js"
   ],
   "pages": {
     "/": [
@@ -22,11 +17,7 @@
       "static/chunks/120-6bf5344d8ff1d03d4bfb.js",
       "static/chunks/106-8274597591218f7dedf2.js",
       "static/chunks/816-5d2e0f8b7e16b5060ac4.js",
-<<<<<<< HEAD
-      "static/chunks/135-04892be88b0e9f7b94be.js",
-=======
       "static/chunks/135-8c3c603fa75be2aa4ed9.js",
->>>>>>> 063cf20d2dbea6ed587dff7c297b0bc8863bcffa
       "static/chunks/pages/index-e49761146374be32bbee.js"
     ],
     "/_app": [
@@ -50,11 +41,7 @@
       "static/chunks/120-6bf5344d8ff1d03d4bfb.js",
       "static/chunks/106-8274597591218f7dedf2.js",
       "static/chunks/816-5d2e0f8b7e16b5060ac4.js",
-<<<<<<< HEAD
-      "static/chunks/135-04892be88b0e9f7b94be.js",
-=======
       "static/chunks/135-8c3c603fa75be2aa4ed9.js",
->>>>>>> 063cf20d2dbea6ed587dff7c297b0bc8863bcffa
       "static/chunks/pages/hashtag/[tag]-cb40d6d33df2ead7f888.js"
     ],
     "/post/[id]": [
@@ -65,11 +52,7 @@
       "static/chunks/120-6bf5344d8ff1d03d4bfb.js",
       "static/chunks/106-8274597591218f7dedf2.js",
       "static/chunks/816-5d2e0f8b7e16b5060ac4.js",
-<<<<<<< HEAD
-      "static/chunks/135-04892be88b0e9f7b94be.js",
-=======
       "static/chunks/135-8c3c603fa75be2aa4ed9.js",
->>>>>>> 063cf20d2dbea6ed587dff7c297b0bc8863bcffa
       "static/chunks/pages/post/[id]-25eb2b7db11a4e57af1b.js"
     ],
     "/profile": [
@@ -95,11 +78,7 @@
       "static/chunks/120-6bf5344d8ff1d03d4bfb.js",
       "static/chunks/106-8274597591218f7dedf2.js",
       "static/chunks/816-5d2e0f8b7e16b5060ac4.js",
-<<<<<<< HEAD
-      "static/chunks/135-04892be88b0e9f7b94be.js",
-=======
       "static/chunks/135-8c3c603fa75be2aa4ed9.js",
->>>>>>> 063cf20d2dbea6ed587dff7c297b0bc8863bcffa
       "static/chunks/pages/user/[id]-6a5682e9130835a2128a.js"
     ]
   },
