@@ -40,7 +40,7 @@ app.use(
   cors({
     origin: [
       'http://localhost:3060',
-      'nodebird.com',
+      'honey-ki.cf/',
       'http://52.78.101.253/',
       'http://localhost:80',
     ], // 허용하는 페이지 주소
